@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Welcome, Admin</h1>
+        <div class="admin-controls">
+            <button onclick="manageUsers()">Manage Users</button>
+            <button onclick="viewComplaints()">View Complaints</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+        <div class="admin-content">
+            <!-- Dynamic content will be injected here -->
+        </div>
+    </div>
+    
+
+    <script>
+        // Function to manage users
+        function manageUsers() {
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            let userHTML = '<h2>Manage Users</h2><p>Here you can  remove, or update user information.</p>';
+
+            // Displaying the list of users
+            userHTML += `
+                <div>
+                    <h3>Current Users:</h3>
+                    <ul id="user-list">
+                        ${users.map((user, index) => `
+                            <li>
+                                ${user.email} <button onclick="deleteUser(${index})">Delete</button>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+                
+          
+            `;
+            document.querySelector('.admin-content').innerHTML = userHTML;
+        }
+
+        // Function to add a new user
+  
+
+         // Function to display complaints
+    function viewComplaints() {
+        const complaints = JSON.parse(localStorage.getItem('complaints')) || [];
+        let complaintsHTML = '<h2>Complaints</h2>';
+
+        if (complaints.length === 0) {
+            complaintsHTML += '<p>No complaints have been raised yet.</p>';
+        } else {
+            complaintsHTML += `
+                <table>
+                    <tr>
+                        <th>Complaint</th>
+                        <th>Status</th>
+                        <th>Timestamp</th>
+                        <th>Action</th>
+                    </tr>
+                    ${complaints.map((complaint, index) => `
+                        <tr>
+                            <td>${complaint.text}</td>
+                            <td>${complaint.status}</td>
+                            <td>${complaint.timestamp}</td>
+                            <td>
+                                <button onclick="resolveComplaint(${index})">Resolve</button>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </table>
+            `;
+        }
+
+        document.querySelector('.admin-content').innerHTML = complaintsHTML;
+    }
+
+    // Function to resolve a complaint
+    function resolveComplaint(index) {
+        const complaints = JSON.parse(localStorage.getItem('complaints')) || [];
+        complaints[index].status = 'Resolved';
+        localStorage.setItem('complaints', JSON.stringify(complaints));
+
+        alert('Complaint resolved successfully!');
+        viewComplaints(); // Refresh the complaints list
+    }
+        // Function to delete a user
+        function deleteUser(index) {
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            users.splice(index, 1); // Remove the user at the given index
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("User deleted successfully!");
+            manageUsers(); // Refresh the user list
+        }
+
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem("role");
+            alert("Logged out successfully!");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

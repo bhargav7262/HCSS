@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Secure Locker Application</title>
+   <link rel="stylesheet" href="user.css">
+</head>
+<body>
+   <!-- Header -->
+   <header>
+     <h1>Secure Locker Application</h1>
+     <nav>
+       <ul>
+         <li><a href="#" onclick="navigateTo('dashboard')">Dashboard</a></li>
+         <li><a href="#" onclick="navigateTo('myLockers')">My Lockers</a></li>
+         <li><a href="#" onclick="navigateTo('complaintsSection')">Complaints</a></li>
+       </ul>
+     </nav>
+     <button onclick="logout()">Logout</button>
+   </header>
+
+
+
+
+   <!-- Dashboard Section -->
+   <section id="dashboard" class="section hidden">
+     <h2>Lockers</h2>
+     <div id="lockerList">
+       <button onclick="openLocker('Bank')">Bank Locker</button>
+       <button onclick="openLocker('Music')">Music Locker</button>
+       <button onclick="openLocker('Mail')">Mail Locker</button>
+       <button onclick="openLocker('Images')">Images Locker</button>
+       <button onclick="openLocker('Videos')">Videos Locker</button>
+       <button onclick="openLocker('Documents')">Documents Locker</button>
+       <button onclick="openLocker('Password')">Password Locker</button>
+     </div>
+   </section>
+
+   <!-- Locker Form Section -->
+   <section id="lockerFormSection" class="section hidden">
+     <h2 id="lockerTitle"></h2>
+     <form id="lockerForm" enctype="multipart/form-data">
+       <!-- Dynamic form content will be inserted here -->
+     </form>
+
+     <button onclick="saveData()">Save</button>
+   </section>
+
+   <!-- My Lockers Section -->
+   <section id="myLockers" class="section hidden">
+     <h2>My Lockers</h2>
+     <table id="myLockersTable">
+       <tr>
+         <th>Locker Type</th>
+         <th>Details</th>
+       </tr>
+     </table>
+   </section>
+
+
+   <section id="complaintsSection" class="section hidden">
+    <h2>Raise a Complaint</h2>
+    <textarea id="complaintText" placeholder="Write your complaint here..." rows="5"></textarea><br>
+    <button onclick="submitComplaint()">Submit Complaint</button>
+</section>
+
+<script>
+    function navigateTo(section) {
+        document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+        document.getElementById(section).classList.remove('hidden');
+    }
+
+    // Function to submit a complaint
+    function submitComplaint() {
+        const complaintText = document.getElementById('complaintText').value.trim();
+        const complaints = JSON.parse(localStorage.getItem('complaints')) || [];
+
+        if (!complaintText) {
+            alert('Please enter a complaint.');
+            return;
+        }
+
+        // Add the new complaint to localStorage
+        complaints.push({ text: complaintText, status: 'Pending', timestamp: new Date().toLocaleString() });
+        localStorage.setItem('complaints', JSON.stringify(complaints));
+
+        alert('Complaint submitted successfully!');
+        document.getElementById('complaintText').value = ''; // Clear the text area
+    }
+    function logout() {
+            sessionStorage.removeItem("role");
+            alert("Logged out successfully!");
+            window.location.href = "index.html";
+        }
+</script>
+
+
+   <script src="script.js"></script>
+</body>
+</html>

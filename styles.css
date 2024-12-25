@@ -1,0 +1,245 @@
+/* Hide all sections initially */
+.hidden {
+    display: none;
+}
+
+/* General layout styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+/* Application name section (initially shown) */
+#application-name-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 100px;
+
+}
+
+.app-name-container h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.app-name-container button {
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.app-name-container button:hover {
+    background-color: #45a049;
+}
+/* Style for the images inside the about-image container */
+.about-image {
+    width:600px;           /* Set a fixed size */
+    height: 250px;  
+    float:center;        /* Set a fixed size */
+    object-fit: cover;      /* Make the image cover the div without distorting */
+    border-radius: 8px;     /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect */
+.about-image:hover {
+    transform: scale(1.05);  /* Slight zoom-in effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increased shadow for hover */
+}
+
+
+/* Login Section */
+#login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Style for login containers */
+.login-container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+input {
+    margin: 1%;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Styling for user login section */
+#login-section .login-container {
+    width: 45%;
+    margin: 10px;
+}
+
+#login-section .login-container.admin-login {
+    background-color: #f1f1f1;
+}
+
+#login-section .login-container.user-login {
+    background-color: #ffffff;
+}
+
+.login-options a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+/* Style for the Sign Up form */
+#sign-up-section {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+#sign-up-section .login-container {
+    width: 80%;
+    max-width: 400px;
+}
+
+#sign-up-section input {
+    margin: 10px;
+    padding: 10px;
+    width: 89%;
+}
+
+#sign-up-section button {
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#sign-up-section button:hover {
+    background-color: #45a049;
+}
+
+#sign-up-section .login-options a {
+    color: #4CAF50;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Forgot Password Section */
+#forgot-password-section {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#forgot-password-section .login-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+#forgot-password-section input {
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+#forgot-password-section button {
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#forgot-password-section button:hover {
+    background-color: #45a049;
+}
+
+#forgot-password-section .login-options a {
+    color: #4CAF50;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #login-section .login-container {
+        width: 80%;
+    }
+
+    #sign-up-section .login-container {
+        width: 80%;
+    }
+
+    #forgot-password-section .login-container {
+        width: 80%;
+    }
+    .about-image {
+        width: 100%;           /* Images will take up full width of container */
+        height: auto;          /* Maintain aspect ratio */
+        margin-bottom: 100px;   /* Space between stacked images */
+    }
+}
+

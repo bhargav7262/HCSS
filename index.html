@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication System</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<section id="application-name-section">
+    <div class="content">
+        <h1>Highly Confidential Security System</h1>
+        <p class="project-description">
+            Welcome to the Highly Confidential Security System (HCSS) – your ultimate digital locker for securely storing sensitive information. From passwords, bank account details, and confidential documents to multimedia files, HCSS ensures top-notch data protection with advanced encryption and seamless accessibility. Keep your personal and professional data safe, organized, and just a click away.</p>
+        <h2>About the System</h2>
+        <p>The Highly Confidential Security System (HCSS) is a secure and efficient platform designed to store and manage sensitive data such as bank details, passwords, documents, and media files. It prioritizes data privacy and protection using advanced encryption techniques while offering an intuitive and user-friendly interface. HCSS ensures your confidential information remains safe, accessible, and organized in one place.</p>
+        </div>
+        <div class="about-images">
+            <img src="https://acsdata.com/wp-content/uploads/confidential-data-security.jpg" alt="Security Technology" class="about-image">
+    </div>
+    <button onclick="showLogin()">Login</button>
+</section>
+
+<section id="login-section" class="hidden">
+    <div class="login-container admin-login">
+        <h2>Admin Login</h2>
+        <form id="admin-login-form">
+            <input type="email" id="admin-email" placeholder="Admin Email" required>
+            <input type="password" id="admin-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="login-container user-login">
+        <h2>User Login</h2>
+        <form id="user-login-form">
+            <input type="email" id="user-email" placeholder="Email" required>
+            <input type="password" id="user-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="login-options">
+            <a href="#" id="forgot-password" onclick="showForgotPassword()">Forgot Password?</a>
+            <a href="#" id="sign-up" onclick="showSignUp()">Sign Up</a>
+        </div>
+    </div>
+</section>
+
+<!-- Sign Up Section (hidden initially) -->
+<section id="sign-up-section" class="hidden">
+    <div class="login-container sign-up-container">
+        <h2>Create an Account</h2>
+        <form id="sign-up-form">
+            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="login-options">
+            <a href="#" id="back-to-login" onclick="backToLogin()">Back to Login</a>
+        </div>
+    </div>
+</section>
+
+<!-- Forgot Password Section (hidden initially) -->
+<section id="forgot-password-section" class="hidden">
+    <div class="login-container forgot-password-container">
+        <h2>Forgot Password?</h2>
+        <form id="forgot-password-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="login-options">
+            <a href="#" id="back-to-login-from-forgot" onclick="backToLogin()">Back to Login</a>
+        </div>
+    </div>
+</section>
+
+
+    <script src="script.js"></script>  <!-- Link to your JavaScript file -->
+</body>
+</html>
